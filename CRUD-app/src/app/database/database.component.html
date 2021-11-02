@@ -1,0 +1,181 @@
+<button (click)="open(content)">Add User</button>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">No</th>
+            <th scope="col">Title</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let user of database let i = index">
+        <tr>
+            <th scope="row" >
+                {{i+1}}
+            </th>        
+            <td>
+                {{user.title}}
+            </td>
+            <td>
+                {{user.firstName}}
+            </td>
+            <td>
+                {{user.lastName}}
+            </td>
+            <td>
+                {{user.email}}
+            </td>
+            <td>
+                {{user.role}}
+            </td>
+            <td>
+                <!-- <button (click)="getUserId(user.id)">Edit </button> -->
+                <button (click)="onEdit(user)" class="btn btn-info" data-toggle="modal" data-target="#editModal">Edit</button>
+                | <button (click)="open(deleteModal)" (click)="getUserId(user.id)">Delete</button>            
+            </td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #content let-modal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add User</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <app-signup></app-signup> 
+</ng-template>
+
+<ng-template #deleteModal let-c="close" let-d="dismiss"> 
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Delete User</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want delete</p>
+    </div>
+    <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-danger" >Delete</button> -->
+        <button class="btn btn-danger mx-3" (click)="deleteUser()">Delete</button>            
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancel</button>
+      </div>
+</ng-template>
+<!--update form-->
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form class="form-signin" [formGroup]="form.updateData" (ngSubmit)="editData()">
+                <div class="form-group col-md-8 offset-md-2">
+                    <label>Title</label>
+                    <input type="text" class="form-control" formControlName="title" name="title" id="title">
+                    <span style="color: red;" >
+                        Name is required min length is 5
+                    </span>
+                </div>        
+                <div class="form-group col-md-8 offset-md-2">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" formControlName="firstName" name="firstName" id="firstName">
+                    <span style="color: red;" >
+                        Name is required min length is 5
+                    </span>
+                </div> 
+                <div class="form-group col-md-8 offset-md-2">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" formControlName="lastName" name="lastName" id="lastName">
+                    <span style="color: red;" >
+                        Name is required min length is 5
+                    </span>
+                </div>        
+                <div class="form-group col-md-8 offset-md-2">
+                    <label>Email</label>
+                    <input type="email" class="form-control" formControlName="email" name="email" id="email" >
+                    <span style="color: red;" >
+                        Name is required min length is 5
+                    </span>
+                </div>
+                <div class="form-group col-md-8 offset-md-2">
+                    <label>Role</label>
+                    <input type="text" class="form-control" formControlName="role" name="role" id="role" >
+                    <span style="color: red;" >
+                        Name is required min length is 5
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary col-md-3 offset-md-3" style="margin-top: 1%;">Update</button>
+                </div>                   
+            </form>
+
+        </div>
+        <div class="modal-footer">
+          <button id="cancel2" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- <div #updateModal > 
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Update User</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="auth-wrapper modal-body">
+            <form class="form-signin" [formGroup]="form.updateData" #form.updateData = "ngForm" (ngSubmit)="updateUser()">
+                <div class="form-group col-md-8 offset-md-2">
+                    <label>Title</label>
+                    <input type="text" class="form-control" formControlName="title" name="title" id="title">
+                    <span style="color: red;" >
+                        Name is required min length is 5
+                    </span>
+                </div>        
+                <div class="form-group col-md-8 offset-md-2">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" formControlName="firstName" name="firstName" id="firstName">
+                    <span style="color: red;" >
+                        Name is required min length is 5
+                    </span>
+                </div> 
+                <div class="form-group col-md-8 offset-md-2">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" formControlName="lastName" name="lastName" id="lastName">
+                    <span style="color: red;" >
+                        Name is required min length is 5
+                    </span>
+                </div>        
+                <div class="form-group col-md-8 offset-md-2">
+                    <label>Email</label>
+                    <input type="email" class="form-control" formControlName="email" name="email" id="email" >
+                    <span style="color: red;" >
+                        Name is required min length is 5
+                    </span>
+                </div>
+                <div class="form-group col-md-8 offset-md-2">
+                    <label>Role</label>
+                    <input type="text" class="form-control" formControlName="role" name="role" id="role" >
+                    <span style="color: red;" >
+                        Name is required min length is 5
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary col-md-3 offset-md-3" style="margin-top: 1%;">Update</button>
+                </div>                   
+            </form>
+        </div>
+    </div>
+</div>
+
+ -->
