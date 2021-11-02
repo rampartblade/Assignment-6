@@ -11,42 +11,43 @@
             <label>First Name</label>
             <input type="text" class="form-control" formControlName="firstName" name="firstName" id="firstName">
             <span style="color: red;" *ngIf="firstName && firstName.touched && firstName.invalid">
-                Name is required min length is 5
+                First Name is required min length is 5
             </span>
         </div> 
         <div class="form-group col-md-8 offset-md-2">
             <label>Last Name</label>
             <input type="text" class="form-control" formControlName="lastName" name="lastName" id="lastName">
             <span style="color: red;" *ngIf="lastName && lastName.touched && lastName.invalid">
-                Name is required min length is 5
+                Last Name is required min length is 5
             </span>
         </div>        
         <div class="form-group col-md-8 offset-md-2">
             <label>Email</label>
             <input type="email" class="form-control" formControlName="email" name="email" id="email">
             <span style="color: red;" *ngIf="email && email.touched && email.invalid">
-                Name is required min length is 5
-            </span>
-        </div>
-        <div class="form-group col-md-8 offset-md-2">
-            <label>Role</label>
-            <input type="text" class="form-control" formControlName="role" name="role" id="role">
-            <span style="color: red;" *ngIf="role && role.touched && role.invalid">
-                Name is required min length is 5
+                Email is required min length is 5
             </span>
         </div> 
+        <div class="form-group mt-3">
+            <label for="role">Role</label>
+            <select class="form-control" name="role" formControlName="role" required>
+                <option value="">---role here---</option>
+                <option value="Admin">Admin</option>
+                <option vale="User">User</option>
+            </select>
+        </div>
         <div class="form-group col-md-8 offset-md-2">
             <label>Password</label>
             <input type="password" class="form-control" formControlName="password" name="password" id="password">
             <span style="color: red;" *ngIf="password && password.touched && password.invalid">
-                Name is required min length is 5
+                Password is required min length is 6
             </span>
         </div>
         <div class="form-group col-md-8 offset-md-2">
             <label>Confirm Password</label>
             <input type="password" class="form-control" formControlName="confirmPassword" name="confirmPassword" id="confirmPassword">
             <span style="color: red;" *ngIf="confirmPassword && confirmPassword.touched && confirmPassword.invalid">
-                Name is required min length is 5
+                Password is required min length is 6
             </span>
         </div>  
         <div class="modal-footer">

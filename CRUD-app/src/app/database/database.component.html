@@ -81,101 +81,45 @@
                 <div class="form-group col-md-8 offset-md-2">
                     <label>Title</label>
                     <input type="text" class="form-control" formControlName="title" name="title" id="title">
-                    <span style="color: red;" >
-                        Name is required min length is 5
+                    <span style="color: red;" *ngIf="title && title.touched && title.invalid">
+                        Title is required min length is 5
                     </span>
                 </div>        
                 <div class="form-group col-md-8 offset-md-2">
                     <label>First Name</label>
                     <input type="text" class="form-control" formControlName="firstName" name="firstName" id="firstName">
-                    <span style="color: red;" >
-                        Name is required min length is 5
+                    <span style="color: red;" *ngIf="firstName && firstName.touched && firstName.invalid">
+                        First Name is required min length is 5
                     </span>
                 </div> 
                 <div class="form-group col-md-8 offset-md-2">
                     <label>Last Name</label>
                     <input type="text" class="form-control" formControlName="lastName" name="lastName" id="lastName">
-                    <span style="color: red;" >
-                        Name is required min length is 5
+                    <span style="color: red;" *ngIf="lastName && lastName.touched && lastName.invalid">
+                        Last Name is required min length is 5
                     </span>
                 </div>        
                 <div class="form-group col-md-8 offset-md-2">
                     <label>Email</label>
                     <input type="email" class="form-control" formControlName="email" name="email" id="email" >
-                    <span style="color: red;" >
-                        Name is required min length is 5
+                    <span style="color: red;"*ngIf="email && email.touched && email.invalid" >
+                        Email is required
                     </span>
                 </div>
                 <div class="form-group col-md-8 offset-md-2">
-                    <label>Role</label>
-                    <input type="text" class="form-control" formControlName="role" name="role" id="role" >
-                    <span style="color: red;" >
-                        Name is required min length is 5
-                    </span>
+                    <label for="role">Role</label>
+                    <select class="form-control" name="role" formControlName="role" required>
+                        <option value="">---role here---</option>
+                        <option value="Admin">Admin</option>
+                        <option vale="User">User</option>
+                    </select>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary col-md-3 offset-md-3" style="margin-top: 1%;">Update</button>
+                    <button id="cancel2" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>                   
             </form>
-
-        </div>
-        <div class="modal-footer">
-          <button id="cancel2" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-  </div>
-<!-- <div #updateModal > 
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Update User</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <div class="auth-wrapper modal-body">
-            <form class="form-signin" [formGroup]="form.updateData" #form.updateData = "ngForm" (ngSubmit)="updateUser()">
-                <div class="form-group col-md-8 offset-md-2">
-                    <label>Title</label>
-                    <input type="text" class="form-control" formControlName="title" name="title" id="title">
-                    <span style="color: red;" >
-                        Name is required min length is 5
-                    </span>
-                </div>        
-                <div class="form-group col-md-8 offset-md-2">
-                    <label>First Name</label>
-                    <input type="text" class="form-control" formControlName="firstName" name="firstName" id="firstName">
-                    <span style="color: red;" >
-                        Name is required min length is 5
-                    </span>
-                </div> 
-                <div class="form-group col-md-8 offset-md-2">
-                    <label>Last Name</label>
-                    <input type="text" class="form-control" formControlName="lastName" name="lastName" id="lastName">
-                    <span style="color: red;" >
-                        Name is required min length is 5
-                    </span>
-                </div>        
-                <div class="form-group col-md-8 offset-md-2">
-                    <label>Email</label>
-                    <input type="email" class="form-control" formControlName="email" name="email" id="email" >
-                    <span style="color: red;" >
-                        Name is required min length is 5
-                    </span>
-                </div>
-                <div class="form-group col-md-8 offset-md-2">
-                    <label>Role</label>
-                    <input type="text" class="form-control" formControlName="role" name="role" id="role" >
-                    <span style="color: red;" >
-                        Name is required min length is 5
-                    </span>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary col-md-3 offset-md-3" style="margin-top: 1%;">Update</button>
-                </div>                   
-            </form>
-        </div>
-    </div>
-</div>
-
- -->
+ </div>

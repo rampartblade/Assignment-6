@@ -145,13 +145,7 @@ export class DatabaseComponent implements OnInit {
     this.form.updateData.controls['firstName'].setValue(item.firstName)
     this.form.updateData.controls['lastName'].setValue(item.lastName)
     this.form.updateData.controls['email'].setValue(item.email)
-    if(item.role ==' User'){
-      this.form.updateData.controls['role'].setValue('1')
-    }
-    else
-    {
-      this.form.updateData.controls['role'].setValue('0')
-    }
+    this.form.updateData.controls['role'].setValue(item.role)
   }
 
   editData(){
